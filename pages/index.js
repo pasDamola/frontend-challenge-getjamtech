@@ -4,9 +4,29 @@ import {MicrophoneIcon, ViewGridIcon} from "@heroicons/react/solid"
 import {SearchIcon} from "@heroicons/react/outline"
 import Image from 'next/image'
 import Footer from '../components/Footer'
+import { useRef } from 'react'
+import { useRouter } from 'next/router'
 
 
 export default function Home() {
+  const searchInputRef = useRef(null);
+  const router = useRouter();
+
+  const search = e => {
+    e.preventDefault();
+    const term = searchInputRef.current.value;
+
+    if(!term) return;
+
+    router.push(`https://google.com/search?q=${term}`)
+    
+  }
+
+  const goToPerfects = e => {
+    e.preventDefault();
+    router.push(`https://perfects.engineering`)
+  }
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <Head>
@@ -35,7 +55,7 @@ export default function Home() {
       </header>
 
       {/* Body */}
-      <form className="flex flex-col items-center mt-44 flex-grow w-4/5">
+      <form className="flex flex-col items-center mt-39 flex-grow w-4/5">
         <Image
         src="https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
         height={100}
@@ -46,15 +66,25 @@ export default function Home() {
         focus-within:shadow-lg max-w-md rounded-full border border-gray-200
         px-5 py-3 items-center sm:max-w-xl lg:max-w-2xl">
           <SearchIcon className="h-5 mr-3 text-gray-500" />
-          <input type="text" className="flex-grow focus:outline-none"/>
+          <input type="text" ref={searchInputRef} className="flex-grow focus:outline-none"/>
           <MicrophoneIcon className="h-5"/>
         </div>
 
-        <div className="flex flex-col w-1/2 space-y-2 justify-center mt-8 sm:space-y-0 sm:flex-row sm:space-x-4">
-          <button className="btn">Google Search</button>
-          <button className="btn">I'm feeling lucky</button>
+        <div className="flex flex-row w-1/2 space-x-4 justify-center mt-8 sm:space-y-0 sm:flex-row sm:space-x-4">
+          <button className="btn" onClick={search}>Google Search</button>
+          <button className="btn" onClick={goToPerfects}>I'm feeling lucky</button>
         </div>
+
+        <div className="flex flex-row w-1/2 space-x-4 justify-center mt-8 sm:space-y-0 sm:flex-row sm:space-x-4">
+          <p className="text-sm">Google offered in:</p>
+          <p className="language">Hausa</p>
+          <p className="language">Igbo</p>
+          <p className="language">Èdè Yorùbá</p>
+          <p className="language">Nigerian Pidgin</p>
+      </div>
       </form>
+
+      {/* Google offered in */}
 
       {/* Footer */}
       <Footer/>

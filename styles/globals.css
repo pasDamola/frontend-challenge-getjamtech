@@ -11,4 +11,7 @@
   .link {
     @apply hover:underline cursor-pointer;
   }
+  .language {
+    @apply hover:underline cursor-pointer text-sm text-blue-800;
+  }
 }
