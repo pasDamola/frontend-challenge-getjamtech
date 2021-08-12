@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Avatar from '../components/Avatar'
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="flex w-full p-5 justify-between text-sm text-gray-700">
+      <header className="flex w-full p-4 justify-between text-sm text-gray-700">
         <div className="flex space-x-4 items-center">
           <p className="link">About</p>
           <p className="link">Store</p>
@@ -22,7 +23,7 @@ export default function Home() {
           {/* Icon */}
 
           {/* Avatar */}
-          <Avatar />
+          <Avatar url="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png" />
         </div>
       </header>
     </div>
