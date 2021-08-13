@@ -24,7 +24,7 @@ export default function Home() {
 
   const goToPerfects = e => {
     e.preventDefault();
-    router.push(`https://perfects.engineering`)
+    router.push('https://perfects.engineering')
   }
 
   return (
